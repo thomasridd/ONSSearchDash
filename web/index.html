@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Tom Ridd">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
+            type="text/javascript">
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="container">
+
+    </div>
+    <div class="container">
+
+            <div class="panel panel-primary" id="table_here">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Search terms and search results</div>
+
+
+            </div>
+    </div>
+
+
+
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
+        type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src = "./js/jquery.csv-0.71.js"></script>
+
+<script>
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "data.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+});
+
+function processData(allText) {
+    var content = '<table class="table">';
+    content += '<th><td>Search term</td><td>Expected</td><td>Actual</td></th>';
+
+    $.csv.toArrays(allText, {}, function(err, data){
+        _.each(data, function(row) {
+            content += '<tr><td></td><td>' + row[0] + '</td><td>' + row[1] + '</td><td></td></tr>';
+            });
+    });
+    content += '</table>';
+
+    $('#table_here').append(content);
+
+
+}
+</script>
+
+<script>
+   contactONS()
+
+function contactONS() {
+//    $.ajax({
+//        crossDomain: true,
+//        type: "GET",
+//        url: "http://beta.ons.gov.uk/search/data?q=labour",
+//        dataType: "json",
+//        success: function(data) {dataSuccess(data);}
+//     });
+     $.getJSON( "http://beta.ons.gov.uk/search/data?q=labour", function( data ) {
+          console.log(data);
+        });
+};
+
+function dataSuccess(data) {
+    console.log(data);
+}
+</script>
+
+</body>
+</html>
