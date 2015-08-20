@@ -90,7 +90,7 @@ function foo(data)
 }
 
 var script = document.createElement('script');
-script.src = '//example.com/path/to/jsonp?callback=foo'
+script.src = 'http://beta.ons.gov.uk/search/data?q=labour?callback=foo'
 
 document.getElementsByTagName('head')[0].appendChild(script);
 // or document.head.appendChild(script) in modern browsers
