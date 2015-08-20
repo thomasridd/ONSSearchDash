@@ -83,16 +83,16 @@ function processData(allText) {
    contactONS()
 
 function contactONS() {
-//    $.ajax({
-//        crossDomain: true,
-//        type: "GET",
-//        url: "http://beta.ons.gov.uk/search/data?q=labour",
-//        dataType: "json",
-//        success: function(data) {dataSuccess(data);}
-//     });
-     $.getJSON( "http://beta.ons.gov.uk/search/data?q=labour", function( data ) {
-          console.log(data);
-        });
+   $.ajax({
+       crossDomain: true,
+       type: "GET",
+       url: "http://beta.ons.gov.uk/search/data?q=labour",
+       dataType: "json",
+       success: function(data) {dataSuccess(data);}
+    });
+     // $.getJSON( "http://beta.ons.gov.uk/search/data?q=labour", function( data ) {
+     //      console.log(data);
+     //    });
 };
 
 function dataSuccess(data) {
