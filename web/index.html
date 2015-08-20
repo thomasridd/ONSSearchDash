@@ -79,6 +79,25 @@ function processData(allText) {
 }
 </script>
 
+
+<script>
+
+
+function foo(data)
+{
+    // do stuff with JSON
+    console.log(data);
+}
+
+var script = document.createElement('script');
+script.src = '//example.com/path/to/jsonp?callback=foo'
+
+document.getElementsByTagName('head')[0].appendChild(script);
+// or document.head.appendChild(script) in modern browsers
+
+
+</script>
+
 <script>
    contactONS()
 
